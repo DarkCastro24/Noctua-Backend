@@ -9,7 +9,6 @@ const apiRouter = require("./routes/index.router");
 const app = express();
 
 async function startServer() {
-
     // Middleware
     app.use(cors());
     app.use(logger('dev'));
@@ -36,4 +35,5 @@ async function startServer() {
 startServer();
 
 module.exports = app;
+
 
