@@ -13,4 +13,8 @@ router.use("/user", userRouter);
 router.use("/lab", labRouter)
 router.use("/news", newsRouter)
 
+router.get('/test', (req, res) => {
+    res.json({ message: 'Test route works!' });
+});
+
 module.exports = router;
