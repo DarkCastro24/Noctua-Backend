@@ -4,12 +4,13 @@ const controller = {}
 
 controller.saveNews = async(req, res, next) => {
     try {
-        const {tittle,body,date,images} = req.body
+        const {tittle,body,date,images,link} = req.body
         const news = new News()
         news["tittle"] = tittle
         news["body"] = body
         news["date"] = date
         news["images"] = images
+        news["link"] = link
         const newsSave = await news.save()
         if(!newsSave){
             return res.status(401).json({error: "error saving news"})

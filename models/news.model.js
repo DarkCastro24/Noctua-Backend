@@ -24,6 +24,10 @@ const NewsSchema = new Schema({
         type: [String],
         default: [],
         required: false
+    },
+    link:{
+        type:String,
+        required: true
     }
 },{ timestamps: true })
 

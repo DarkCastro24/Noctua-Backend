@@ -3,18 +3,6 @@ const validator = require('validator');
 const crypto = require('crypto');
 const debug = require('debug')('app:user-model');
 
-const subjectSchema = new mongoose.Schema({
-    subject: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    cycle: {
-        type: Number,
-        required: true
-    }
-});
-
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -48,8 +36,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        unique: false,
-        sparse: true
     },
     biography: {
         type: String,
@@ -62,12 +48,19 @@ const userSchema = new mongoose.Schema({
         type: String,
         trim: true
     }],
-    allSubjects: [subjectSchema],
+    allSubjects: [{
+        type: String,
+        trim: true
+    }],
     hashedPassword: {
         type: String
     },
     profilePhoto: {
         type: String
+    },
+    visible:{
+        type: String,
+        default: "true"
     },
     salt: {
         type: String

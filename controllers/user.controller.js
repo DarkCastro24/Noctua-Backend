@@ -38,7 +38,7 @@ controller.getOne = async (req, res, next) => {
 controller.update = async (req, res) => {
     const id = req.params.id; // Extrae el ID del usuario de los parámetros
     try {
-        const update = await User.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
+        const update = await User.findByIdAndUpdate(id, req.body, { new: true });
         if (!update) {
             return res.status(404).send({ message: "Usuario no encontrado" }); 
         }

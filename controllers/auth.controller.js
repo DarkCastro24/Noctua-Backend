@@ -4,7 +4,7 @@ const controller = {};
 
 controller.register = async (req, res, next) => {
     try {
-        const {username, name, password, profilePhoto} = req.body;
+        const {username, name, password, profilePhoto, type} = req.body;
         const user = await User.findOne({$or: [{username: username}]});
         if (user) {
             // Usuario ya registrado (se retorna todo el registro)
@@ -16,7 +16,8 @@ controller.register = async (req, res, next) => {
                 password: password,
                 name: name,
                 email: username, 
-                profilePhoto: profilePhoto
+                profilePhoto: profilePhoto,
+                type: type
             })
             await newUser.save();
             return res.status(201).json({message: "Registrado" ,id: newUser._id, name: newUser.name, username: newUser.username, profilePhoto: newUser.profilePhoto});
